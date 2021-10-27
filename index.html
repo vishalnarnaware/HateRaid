@@ -12,17 +12,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="56">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="#page-top"><strong>Brand</strong></a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler float-end" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand" href="#page-top"><strong>HateRaid</strong></a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler float-end" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#download"><strong>Predict</strong></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#predict"><strong>Predict</strong></a></li>
                     <li class="nav-item"><a class="nav-link" href="#features"><strong>Features</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact"><strong>Contact</strong></a></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="row h-100">
                 <div class="col-lg-7 my-auto">
                     <div class="mx-auto header-content">
-                        <h1 class="mb-5">New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1><a class="btn btn-outline-warning btn-xl" role="button" href="#download">Start Now for Free!</a>
+                        <h1 class="mb-5">HateRaid is a web app that will help you identify hate content easily!<br><br><a class="btn btn-outline-warning btn-xl" role="button" href="#predict" style="padding-top: 10px;padding-right: 45px;padding-bottom: 5px;padding-left: 45px;text-align: center;font-size: 16px;">Fight hate now!<br><i class="fa fa-angle-down"></i><br></a></h1>
                     </div>
                 </div>
                 <div class="col-lg-5 my-auto">
@@ -49,7 +49,8 @@
             </div>
         </div>
     </header>
-    <section class="text-center bg-primary download" id="download"><form action method="post">
+    <section class="text-center bg-primary download" id="predict"><div style="margin: 5%">
+<form action method="post">
   
   <h1><strong>Hate Predictor</strong> with image and/or text</h1>
   
@@ -59,7 +60,7 @@
   </div>
   
   <div class="form-group file-area">
-        <label for="image" style="text-align: left;">Images <span><b>Your images should be at least 400x300 wide</b></span></label>
+        <label for="image" style="text-align: left;">Image <span><b>Your image should be at least 400x300 wide</b></span></label>
     <input type="file" name="image" id="image" required="required" multiple="multiple"/>
     <div class="file-dummy">
       <div class="success">Great, your meme is selected. Keep on.</div>
@@ -72,6 +73,7 @@
   </div>
   
 </form>
+</div>
 
 
 
@@ -129,19 +131,9 @@
             </div>
         </div>
     </section>
-    <section class="bg-primary contact" id="contact">
-        <div class="container">
-            <h2><span>We&nbsp;</span><i class="fa fa-heart"></i><span>&nbsp;new friends!</span></h2>
-            <ul class="list-inline list-social">
-                <li class="list-inline-item social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li class="list-inline-item social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li class="list-inline-item social-google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            </ul>
-        </div>
-    </section>
     <footer>
         <div class="container">
-            <p>©&nbsp;Brand 2021. All Rights Reserved.</p>
+            <p>© HateRaid 2021. All Rights Reserved.</p>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Privacy</a></li>
                 <li class="list-inline-item"><a href="#">Terms</a></li>
@@ -150,6 +142,7 @@
         </div>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/new-age.js"></script>
 </body>
 

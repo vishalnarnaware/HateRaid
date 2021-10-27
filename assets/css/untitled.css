@@ -50,8 +50,6 @@
   display: none;
 }
 
-/* ===================== BASIC STYLING ===================== */
-
 * {
   /*box-sizing: border-box;*/
   font-family: 'Lato', sans-serif;
@@ -113,5 +111,14 @@ button {
   max-width: 500px;
   margin: auto;
   margin-bottom: 30px;
+}
+
+section.features .feature-item i {
+  font-size: 80px;
+  display: block;
+  margin-bottom: 15px;
+  background: linear-gradient(to left, #7b4397, #dc2430);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
