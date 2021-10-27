@@ -5,22 +5,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - Brand</title>
+    <meta name="description" content="Prototype for identifying hate content online">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="56">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="#page-top">Brand</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler float-end" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand" href="#page-top"><strong>Brand</strong></a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler float-end" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#download"><strong>Predict</strong></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features"><strong>Features</strong></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact"><strong>Contact</strong></a></li>
                 </ul>
             </div>
         </div>
@@ -47,22 +49,41 @@
             </div>
         </div>
     </header>
-    <section class="text-center bg-primary download" id="download">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
-                    <p>Our app is available on any mobile device! Download now to get started!</p>
-                    <div class="badges"><a class="badge-link" href="#"><img src="assets/img/google-play-badge.svg"></a><a class="badge-link" href="#"><img src="assets/img/app-store-badge.svg"></a></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="text-center bg-primary download" id="download"><form action method="post">
+  
+  <h1><strong>Hate Predictor</strong> with image and/or text</h1>
+  
+  <div class="form-group">
+    <label for="caption" style="text-align: left;">Caption <span><b>This caption should be descriptive</b></span></label>
+    <input type="text" name="caption" id="caption" class="form-controll"/>
+  </div>
+  
+  <div class="form-group file-area">
+        <label for="image" style="text-align: left;">Images <span><b>Your images should be at least 400x300 wide</b></span></label>
+    <input type="file" name="image" id="image" required="required" multiple="multiple"/>
+    <div class="file-dummy">
+      <div class="success">Great, your meme is selected. Keep on.</div>
+      <div class="default">Please select a meme</div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <button type="submit">Get Prediction</button>
+  </div>
+  
+</form>
+
+
+
+
+
+
+<link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'></section>
     <section id="features" class="features">
         <div class="container">
             <div class="text-center section-heading">
                 <h2>Unlimited Features, Unlimited Fun</h2>
-                <p class="text-muted">Check out what you can do with this app theme!</p>
+                <p class="text-muted">Check out what you can do with our app!</p>
                 <hr>
             </div>
             <div class="row">
@@ -80,14 +101,14 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="feature-item"><i class="icon-screen-smartphone text-primary"></i>
-                                    <h3>Device Mockups</h3>
-                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
+                                    <h3>Accurate Predictions</h3>
+                                    <p class="text-muted">Classify with 75% accuracy!</p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="feature-item"><i class="icon-camera text-primary"></i>
                                     <h3>Flexible Use</h3>
-                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
+                                    <p class="text-muted">Put an image, or text in the screen and get prediction!</p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -107,14 +128,6 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="cta" style="background-image:url('assets/img/bg-cta.jpg');">
-        <div class="cta-content">
-            <div class="container">
-                <h2>Stop waiting.<br>Start building.<br></h2><a class="btn btn-outline-warning btn-xl" role="button" href="#contact">Let's Get Started!</a>
-            </div>
-        </div>
-        <div class="overlay"></div>
     </section>
     <section class="bg-primary contact" id="contact">
         <div class="container">
