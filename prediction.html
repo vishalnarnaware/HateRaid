@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="assets/css/Multi-step-form.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
@@ -23,12 +24,12 @@
     <header class="masthead" style="background: url('assets/img/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="col-lg-7 my-auto">
+                <div class="col-lg-7 my-auto" data-aos="fade-right" data-aos-duration="900" data-aos-once="true">
                     <div class="mx-auto header-content">
                         <h2 class="mb-5">The Prediction for given content is <br><span style="color: var(--bs-body-color);font-size: 55px;font-weight: bold;font-family: Catamaran, sans-serif;">Non-Hateful</span><br><br><a class="btn btn-outline-warning btn-xl" role="button" href="index.html" style="padding-top: 10px;padding-right: 45px;padding-bottom: 10px;padding-left: 45px;text-align: center;font-size: 16px;font-family: Catamaran, sans-serif;">Predict more &gt;<br></a><br><br><span style="font-size: 24px;font-family: Catamaran, sans-serif;color: var(--bs-body-bg);">Prediction seem off to you?<br><a href="#feedback" style="color: var(--bs-body-bg);font-family: Catamaran, sans-serif;text-decoration:  underline;">Fill out a quick minute form to let us improve</a><br></span><i class="fa fa-angle-double-down"></i></h2>
                     </div>
                 </div>
-                <div class="col-lg-5 my-auto">
+                <div class="col-lg-5 my-auto" data-aos="fade-left" data-aos-duration="900" data-aos-once="true">
                     <div class="device-container">
                         <div class="device-mockup iphone6_plus portrait white">
                             <div class="device" style="background-image:url('assets/img/iphone_6_plus_white_port.png');">
@@ -42,58 +43,63 @@
             </div>
         </div>
     </header>
-    <section id="feedback" class="bg-primary"><h1><strong>Feedback</strong> for Prediction</h1>
-        <div id="multple-step-form-n" class="container overflow-hidden" style="margin-top: 0px;margin-bottom: 10px;padding-bottom: 300px;padding-top: 57px;">
-            <div id="progress-bar-button" class="multisteps-form">
-                <div class="d-xl-flex justify-content-xl-center row">
-                    <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
-                        <div class="multisteps-form__progress"><a class="btn multisteps-form__progress-btn js-active" role="button" title="User Info">User Info</a><a class="btn multisteps-form__progress-btn" role="button" title="User Info">About</a><a class="btn multisteps-form__progress-btn" role="button" title="User Info">Contact&nbsp;</a></div>
+    <section id="feedback" class="bg-primary">
+        <div data-aos="zoom-in" data-aos-duration="900" data-aos-once="true">
+            <h1><strong>Feedback</strong> for Prediction</h1>
+            <div id="multple-step-form-n" class="container overflow-hidden" style="margin-top: 0px;margin-bottom: 10px;padding-bottom: 0px;padding-top: 5px;">
+                <div id="progress-bar-button" class="multisteps-form">
+                    <div class="d-xl-flex justify-content-xl-center row">
+                        <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+                            <div class="multisteps-form__progress">
+                                <a class="btn multisteps-form__progress-btn js-active noHover" role="button">About You</a>
+                                <a class="btn multisteps-form__progress-btn noHover" role="button">Feedback</a>
+                                <a class="btn multisteps-form__progress-btn noHover" role="button">Submit</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="multistep-start-row" class="row">
-                <div id="multistep-start-column" class="col-12 col-lg-8 m-auto">
-                    <form id="main-form" class="multisteps-form__form">
-                        <div id="single-form-next" class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
-                            <h3 class="text-center multisteps-form__title">User Info</h3>
-                            <div id="form-content" class="multisteps-form__content">
-                                <div class="d-xl-flex justify-content-xl-center align-items-xl-center form-row mt-4" id="input-grp-double">
-                                    <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" type="text" placeholder="First name "></div>
-                                    <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" type="text" placeholder="Last name "></div>
+                <div id="multistep-start-row" class="row">
+                    <div id="multistep-start-column" class="col-12 col-lg-8 m-auto">
+                        <form id="main-form" class="multisteps-form__form">
+                            <div id="single-form-next" class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                                <h3 class="text-center multisteps-form__title">About You</h3>
+                                <div id="form-content" class="multisteps-form__content">
+                                    <div class="d-xl-flex justify-content-xl-center align-items-xl-center form-row mt-4" id="input-grp-double">
+                                        <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" type="text" placeholder="First name "></div>
+                                        <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" type="text" placeholder="Last name "></div>
+                                    </div>
+                                    <div id="input-grp-single" class="form-row mt-4">
+                                        <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="Email" inputmode="email"></div>
+                                    </div>
+                                    <div id="next-button" class="button-row d-flex mt-4">
+                                        <button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                                    </div>
                                 </div>
-                                <div id="input-grp-single" class="form-row mt-4">
-                                    <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="Email" inputmode="email"></div>
-                                </div>
-                                <div id="next-button" class="button-row d-flex mt-4"><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
                             </div>
-                        </div>
-                        <div id="single-form-next-prev" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                            <h3 class="text-center multisteps-form__title">About</h3>
-                            <div id="form-content-1" class="multisteps-form__content">
-                                <div id="input-grp-double-1" class="form-row mt-4">
-                                    <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" type="text" placeholder="First name "></div>
-                                    <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" type="text" placeholder="Last name "></div>
+                            <div id="single-form-next-prev" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                                <h3 class="text-center multisteps-form__title">Why do you think the prediction is wrong?</h3>
+                                <div id="form-content-1" class="multisteps-form__content">
+                                    <div id="input-grp-single-1" class="form-row mt-4">
+                                        <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="Explain Here"></div>
+                                    </div>
+                                    <div id="next-prev-buttons" class="button-row d-flex mt-4">
+                                        <button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                                        <button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                                    </div>
                                 </div>
-                                <div id="input-grp-single-1" class="form-row mt-4">
-                                    <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="House"></div>
-                                </div>
-                                <div id="next-prev-buttons" class="button-row d-flex mt-4"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
                             </div>
-                        </div>
-                        <div id="single-form-next-prev-1" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                            <h3 class="text-center multisteps-form__title">About</h3>
-                            <div id="form-content-2" class="multisteps-form__content">
-                                <div id="input-grp-double-2" class="form-row mt-4">
-                                    <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" type="text" placeholder="First name "></div>
-                                    <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" type="text" placeholder="Last name "></div>
+                            <div id="single-form-next-prev-1" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                                <h3 class="text-center multisteps-form__title">Thank you!</h3>
+                                <h4 class="text-center multisteps-form__title">Click on submit to send response</h4>
+                                <div id="form-content-2" class="multisteps-form__content">
+                                    <div id="next-prev-buttons-1" class="button-row mt-4" style="text-align:center;width: 300px;margin: 0 auto;">
+                                        <button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Go back</button>
+                                        <button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Submit">Submit</button>
+                                    </div>
                                 </div>
-                                <div id="input-grp-single-2" class="form-row mt-4">
-                                    <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="House"></div>
-                                </div>
-                                <div id="next-prev-buttons-1" class="button-row d-flex mt-4"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,6 +115,8 @@
         </div>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/Multi-step-form.js"></script>
     <script src="assets/js/new-age.js"></script>
 </body>
