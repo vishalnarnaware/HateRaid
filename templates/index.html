@@ -4,17 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
+    <title>Home - HateRaid</title>
     <meta name="description" content="Prototype for identifying hate content online">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="static/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="static/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
-    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="static/css/Multi-step-form.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="56">
@@ -29,7 +29,7 @@
             </div>
         </div>
     </nav>
-    <header class="masthead" style="background: url('assets/img/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);">
+    <header class="masthead" style="background: url('static/img/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="col-lg-7 my-auto" data-aos="fade-right" data-aos-duration="900" data-aos-once="true">
@@ -40,8 +40,8 @@
                 <div class="col-lg-5 my-auto" data-aos="fade-left" data-aos-duration="900" data-aos-once="true">
                     <div class="device-container">
                         <div class="device-mockup iphone6_plus portrait white">
-                            <div class="device" style="background-image:url('assets/img/iphone_6_plus_white_port.png');">
-                                <div class="screen"><img class="img-fluid" src="assets/img/demo-screen-1.jpg"></div>
+                            <div class="device" style="background-image:url('static/img/iphone_6_plus_white_port.png');">
+                                <div class="screen"><img class="img-fluid" src="static/img/demo-screen-1.jpg"></div>
                                 <div class="button"></div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
     </header>
     <section class="text-center bg-primary download" id="predict"><div style="margin: 5%">
     <div data-aos="fade-up" data-aos-duration="900" data-aos-once="true">
-    <form action method="post">
+    <form action="{{ url_for('uploader') }}" method="POST" enctype="multipart/form-data">
   
       <h1><strong>Hate Predictor</strong> with image and/or text</h1>
   
@@ -87,8 +87,8 @@
                 <div class="col-lg-4 my-auto" data-aos="fade-up" data-aos-duration="500" data-aos-once="true">
                     <div class="device-container">
                         <div class="device-mockup iphone6_plus portrait white">
-                            <div class="device" style="background-image:url('assets/img/iphone_6_plus_white_port.png');">
-                                <div class="screen"><img class="img-fluid" src="assets/img/demo-screen-1.jpg"></div>
+                            <div class="device" style="background-image:url('static/img/iphone_6_plus_white_port.png');">
+                                <div class="screen"><img class="img-fluid" src="static/img/demo-screen-1.jpg"></div>
                             </div>
                         </div>
                     </div>
@@ -136,11 +136,11 @@
             </ul>
         </div>
     </footer>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="assets/js/Multi-step-form.js"></script>
-    <script src="assets/js/new-age.js"></script>
+    <script src="static/js/Multi-step-form.js"></script>
+    <script src="static/js/new-age.js"></script>
 </body>
 
 </html>
