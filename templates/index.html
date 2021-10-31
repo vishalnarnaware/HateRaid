@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="static/css/Multi-step-form.css">
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/title.css">
+    <link rel="icon" href="static/img/favicon/favicon.ico?" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/jpeg" sizes="180x180" href="static/img/favicon/favicon_180.jpg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="static/img/favicon/favicon_16.jpg">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="static/img/favicon/favicon_32.jpg">
+    <link rel="icon" type="image/jpeg" sizes="180x180" href="static/img/favicon/favicon_180.jpg">
+    <link rel="icon" type="image/jpeg" sizes="192x192" href="static/img/favicon/favicon_192.jpg">
+    <link rel="icon" type="image/jpeg" sizes="512x512" href="static/img/favicon/favicon_512.jpg">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
@@ -32,7 +39,7 @@
             </div>
         </div>
     </nav>
-    <header class="masthead" style="background: url('static/img/bg-pattern.png'), linear-gradient( 134.6deg,  rgba(201,37,107,1) 15.4%, rgba(116,16,124,1) 74.7% );">
+    <header class="masthead" style="background: url('static/img/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);">
         <section class="text-center download" id="predict">
     <div>
         <h3 style="margin-top: -5%; font-size:400%">
@@ -43,7 +50,7 @@
 	</h3>
         <div style="margin: 5%;">
             <form name="myForm" action="{{ url_for('uploader') }}" method="POST" enctype="multipart/form-data">
-  
+
       <div class="form-group">
         <label for="caption" style="text-align: left;">Caption <span><b>This caption should be meme text, post text or neither</b></span></label>
         <input type="text" name="caption" id="caption" class="form-controll" />

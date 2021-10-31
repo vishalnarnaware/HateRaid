@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400|Playfair+Display:400,700,400italic|Libre+Baskerville:400,700,400italic|Muli:300,400|Open+Sans:400,300,700|Oswald:400,700|Raleway:400,100,300,700|Montserrat:400,700|Merriweather:400,300,300italic,400italic,700|Bree+Serif|Vollkorn:400italic,400,700|Abril+Fatface|Cardo:400,400italic);
-
 .bg-primary {
     background: #7F7FD5; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* Chrome 10-25, Safari 5.1-6 */
@@ -10,13 +8,104 @@
     pointer-events: none;
 }
 
-.montserrat{font-family: 'Montserrat'}
+/* by default align the elements in the .tweet container */
+.tweet {
+    margin: 1rem;
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+    background: #24202000;
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0 1px 20px -10px hsla(0, 0%, 0%, 0.2);
+    text-align: center;
+}
+/* by default separate the sibling elements starting with the second */
+.tweet > * + * {
+    margin-top: 1rem;
+}
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.tweet h1 {
+    font-size: 1.2rem;
+}
+.tweet h2,
+.tweet h3 {
+    font-weight: 400;
+    font-size: 1rem;
+}
+.tweet p {
+    line-height: 2;
+    font-size: 1.1rem;
+    text-align: left;
+}
+/* display the icons in a vertically aligned row */
+.icons {
+    color: hsl(240, 20%, 60%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.icons svg {
+    width: 25px;
+    height: 25px;
+}
+
+/* bonus: change the color of the stroke when hovering on the icons, thanks to currentColor */
+.icons svg:hover {
+    color: hsl(320, 95%, 50%);
+}
+/* bonus: change the color of the text following a highlight
+using the pseudo element on the entire document (`::selection {}`) would work as well
+using the > direct children selector would skip the time element
+*/
+.tweet *::selection {
+    color: #1DA1F2;
+}
+
+/* when the viewport is wider than an arbitrary threshold */
+@media (min-width: 100px) {
+    /* when grid is supported */
+    @supports (display: grid) {
+        /* remove the spacing introduced between the elements */
+        .tweet > * + * {
+            margin-top: initial;
+        }
+        .tweet {
+            /* display the content in a grid with four columns and three rows */
+            display: grid;
+            gap: 1.5rem;
+            grid-template-areas:
+                "avatar handle name time"
+                "avatar message message message"
+                "avatar icons icons icons";
+            /* reset the alignment of the nested elements */
+            text-align: initial;
+        }
+        /* assign to each nested element the appropriate grid-area
+        align the elements horizontally and vertically as needed
+        */
+        .tweet > svg {
+            grid-area: avatar;
+            justify-self: center;
+            align-self: center;
+        }
+        .tweet h1 {
+            grid-area: name;
+            align-self: baseline;
+        }
+        .tweet h2 {
+            grid-area: handle;
+            align-self: baseline;
+        }
+        .tweet h3 {
+            grid-area: time;
+            align-self: baseline;
+        }
+        .tweet p {
+            grid-area: message;
+        }
+        .tweet .icons {
+            grid-area: icons;
+        }
+    }
 }
 
 .file-area {

@@ -40,11 +40,14 @@ class ClipEncoderMulti(nn.Module):
 
 
 class Prepucess:
-    def __init__(self, tokenizer, transforms, max_seq_length):
+    def __init__(self, tokenizer, transforms, max_seq_length, image_encoder_size=288, device="cpu"):
         self.tokenizer = tokenizer
         self.max_seq_length = max_seq_length
 
         self.transforms = transforms
+
+        self.image_encoder_size = image_encoder_size
+        self.device = device
 
     def process(self, img_dir, text):
         sentence = torch.LongTensor(self.tokenizer.encode(text, add_special_tokens=True))
@@ -54,11 +57,11 @@ class Prepucess:
         image = Image.open(img_dir).convert("RGB")
         sliced_images = slice_image(image, 288)
         sliced_images = [np.array(self.transforms(im)) for im in sliced_images]
-        image = resize_pad_image(image, image_encoder_size)
+        image = resize_pad_image(image, self.image_encoder_size)
         image = np.array(self.transforms(image))
         
         sliced_images = [image] + sliced_images         
-        sliced_images = torch.from_numpy(np.array(sliced_images)).to(device)
+        sliced_images = torch.from_numpy(np.array(sliced_images)).to(self.device)
 
         return {
             "image_start_token": start_token,            
@@ -89,19 +92,67 @@ def final_collate_fn(batch):
         img_start_token[None], img_end_token[None], id_tensor[None]
     )
 
+def slice_image(im, desired_size):
+    '''
+    Resize and slice image
+    '''
+    old_size = im.size
+
+    ratio = float(desired_size) / min(old_size)
+    new_size = tuple([int(x * ratio) for x in old_size])
+
+    im = im.resize(new_size, Image.ANTIALIAS)
+
+    ar = np.array(im)
+    images = []
+    if ar.shape[0] < ar.shape[1]:
+        middle = ar.shape[1] // 2
+        half = desired_size // 2
+
+        images.append(Image.fromarray(ar[:, :desired_size]))
+        images.append(Image.fromarray(ar[:, middle - half:middle + half]))
+        images.append(Image.fromarray(ar[:, ar.shape[1] - desired_size:ar.shape[1]]))
+    else:
+        middle = ar.shape[0] // 2
+        half = desired_size // 2
+
+        images.append(Image.fromarray(ar[:desired_size, :]))
+        images.append(Image.fromarray(ar[middle - half:middle + half, :]))
+        images.append(Image.fromarray(ar[ar.shape[0] - desired_size:ar.shape[0], :]))
+
+    return images
+
+def resize_pad_image(im, desired_size):
+    '''
+    Resize and pad image to a desired size
+    '''
+    old_size = im.size
+
+    ratio = float(desired_size)/max(old_size)
+    new_size = tuple([int(x*ratio) for x in old_size])
+
+    im = im.resize(new_size, Image.ANTIALIAS)
+
+    # create a new image and paste the resized on it
+    new_im = Image.new("RGB", (desired_size, desired_size))
+    new_im.paste(im, ((desired_size-new_size[0])//2,
+                        (desired_size-new_size[1])//2))
+
+    return new_im
+
 
 class OCR:
     def __init__(self):
         self.reader = easyocr.Reader(['en'])
 
     def recognize(self, img_path):
-        txt = self.reader.readtext('txn.jfif', detail = 0)
+        txt = self.reader.readtext(img_path, detail = 0)
         clean = ' '.join(txt)
         return clean
 
 
 class Model:
-    def __init__(self, model_path='models/model-embs4-seq80-auc0.876-loss0.437-acc0.804.pt'):
+    def __init__(self, model_path='models/model.pt'):
         # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.device = torch.device("cpu")
 
@@ -126,78 +177,30 @@ class Model:
 
         self.pre = Prepucess(self.tokenizer, self.preprocess, self.max_seq_length - self.num_image_embeds - 2)
 
-        config = MMBTConfig(transformer_config, num_labels=num_labels, modal_hidden_size=image_features_size)
-        self.model = MMBTForClassification(config, transformer, image_encoder)
-        _ = load_checkpoint(model_path, self.model)
+        config = MMBTConfig(transformer_config, num_labels=self.num_labels,
+                            modal_hidden_size=self.image_features_size)
+        self.model = MMBTForClassification(config, self.transformer, self.image_encoder)
+        _ = self.load_checkpoint(model_path, self.model)
 
         self.ocr = OCR()
 
 
-    def load_checkpoint(load_path, model):
+    def load_checkpoint(self, load_path, model):
         if load_path==None:
             return
     
-        state_dict = torch.load(load_path, map_location=device)
+        state_dict = torch.load(load_path, map_location=self.device)
         print(f'Model loaded from <== {load_path}')
     
         model.load_state_dict(state_dict['model_state_dict'])
         return state_dict['valid_loss']
 
-
-    def slice_image(self, im, desired_size):
-        '''
-        Resize and slice image
-        '''
-        old_size = im.size  
-
-        ratio = float(desired_size)/min(old_size)
-        new_size = tuple([int(x*ratio) for x in old_size])
-
-        im = im.resize(new_size, Image.ANTIALIAS)
-    
-        ar = np.array(im)
-        images = []
-        if ar.shape[0] < ar.shape[1]:
-            middle = ar.shape[1] // 2
-            half = desired_size // 2
-        
-            images.append(Image.fromarray(ar[:, :desired_size]))
-            images.append(Image.fromarray(ar[:, middle-half:middle+half]))
-            images.append(Image.fromarray(ar[:, ar.shape[1]-desired_size:ar.shape[1]]))
-        else:
-            middle = ar.shape[0] // 2
-            half = desired_size // 2
-        
-            images.append(Image.fromarray(ar[:desired_size, :]))
-            images.append(Image.fromarray(ar[middle-half:middle+half, :]))
-            images.append(Image.fromarray(ar[ar.shape[0]-desired_size:ar.shape[0], :]))
-
-        return images
-
-    def resize_pad_image(self, im, desired_size):
-        '''
-        Resize and pad image to a desired size
-        '''
-        old_size = im.size  
-
-        ratio = float(desired_size)/max(old_size)
-        new_size = tuple([int(x*ratio) for x in old_size])
-
-        im = im.resize(new_size, Image.ANTIALIAS)
-
-        # create a new image and paste the resized on it
-        new_im = Image.new("RGB", (desired_size, desired_size))
-        new_im.paste(im, ((desired_size-new_size[0])//2,
-                            (desired_size-new_size[1])//2))
-
-        return new_im
-
-    def final_prediction(self, batch): 
+    def final_prediction(self, batch, thres=0.5):
         preds = None
         proba = None
 
         self.model.eval()
-        batch = tuple(t.to(device) for t in batch)
+        batch = tuple(t.to(self.device) for t in batch)
 
         with torch.no_grad():
             ids = batch[5]
@@ -212,7 +215,7 @@ class Model:
             outputs = self.model(**inputs)
             logits = outputs[0]
 
-            preds = torch.sigmoid(logits).detach().cpu().numpy() > 0.5
+            preds = torch.sigmoid(logits).detach().cpu().numpy() > thres
             proba = torch.sigmoid(logits).detach().cpu().numpy()
     
         result = {
@@ -222,16 +225,33 @@ class Model:
     
         return result
 
-    def predict(self, image_dir, text=None):
-        if text==None:
-            text = self.ocr.recognize(image_dir)
-        batch = self.pre.process(img_dir, text)
+    def predict(self, image_dir=None, text=None):
+        if (image_dir==None and text==None):
+            print('Give this model something!')
+            return -1
 
-        results = final_prediction(fin_bat)
+        if image_dir:
+            onimage = self.ocr.recognize(image_dir)
+            thres = 0.5
+            if text:
+                text = text + ' ' + onimage
+                batch = self.pre.process(image_dir, text)
+            batch = self.pre.process(image_dir, onimage)
+        else:
+            image_dir = os.path.join(os.getcwd(), 'static', 'img', 'memes', 'black.png')
+            thres = 0.25
+
+            batch = self.pre.process(image_dir, text)
+
+        fin_bat = final_collate_fn(batch)
+
+        results = self.final_prediction(fin_bat, thres)
+        print(results)
 
         return results['preds'][0][0]
 
 if __name__ == '__main__':
     model = Model()
 
-    print(model.predict('test_img.jpg', 'This is test...'))
+    #print(model.predict('40916.png', 'my president sitting with a traitor and his tranny wife'))
+    print(model.predict('40916.png'))
