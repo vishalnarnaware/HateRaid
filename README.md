@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```python
 python app.py
 ```
-Model Checkpoint [here](https://drive.google.com/drive/folders/1BdSbvu9BGm1lA6nE8eTxmqDUzPrlCXsl)
+Download Model Checkpoint [here](https://drive.google.com/drive/folders/1BdSbvu9BGm1lA6nE8eTxmqDUzPrlCXsl)
 
 ## Screenshots
 |    |    |
