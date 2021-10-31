@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400|Playfair+Display:400,700,400italic|Libre+Baskerville:400,700,400italic|Muli:300,400|Open+Sans:400,300,700|Oswald:400,700|Raleway:400,100,300,700|Montserrat:400,700|Merriweather:400,300,300italic,400italic,700|Bree+Serif|Vollkorn:400italic,400,700|Abril+Fatface|Cardo:400,400italic);">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="static/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="static/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="static/css/Multi-step-form.css">
     <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/title.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="56">
@@ -29,57 +32,54 @@
             </div>
         </div>
     </nav>
-    <header class="masthead" style="background: url('static/img/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-lg-7 my-auto" data-aos="fade-right" data-aos-duration="900" data-aos-once="true">
-                    <div class="mx-auto header-content">
-                        <h1 class="mb-5">HateRaid is a web app that will help you identify hate content easily!<br><br><a class="btn btn-outline-warning btn-xl" role="button" href="#predict" style="padding-top: 10px;padding-right: 45px;padding-bottom: 5px;padding-left: 45px;text-align: center;font-size: 16px;">Fight hate now!<br><i class="fa fa-angle-down"></i><br></a></h1>
-                    </div>
-                </div>
-                <div class="col-lg-5 my-auto" data-aos="fade-left" data-aos-duration="900" data-aos-once="true">
-                    <div class="device-container">
-                        <div class="device-mockup iphone6_plus portrait white">
-                            <div class="device" style="background-image:url('static/img/iphone_6_plus_white_port.png');">
-                                <div class="screen"><img class="img-fluid" src="static/img/demo-screen-1.jpg"></div>
-                                <div class="button"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="iphone-mockup"></div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section class="text-center bg-primary download" id="predict"><div style="margin: 5%">
-    <div data-aos="fade-up" data-aos-duration="900" data-aos-once="true">
-    <form action="{{ url_for('uploader') }}" method="POST" enctype="multipart/form-data">
-  
-      <h1><strong>Hate Predictor</strong> with image and/or text</h1>
+    <header class="masthead" style="background: url('static/img/bg-pattern.png'), linear-gradient( 134.6deg,  rgba(201,37,107,1) 15.4%, rgba(116,16,124,1) 74.7% );">
+        <section class="text-center download" id="predict">
+    <div>
+        <h3 style="margin-top: -5%; font-size:400%">
+	    Hate<span style="color: #FF4136"><b>Raid</b></span><br>
+	</h3>
+	<h3 style="margin-bottom: 1%; font-size:200%">
+	    Helps identify <span style="color: #FF4136"><b><u>Hate Content</u></b></span> easily.
+	</h3>
+        <div style="margin: 5%;">
+            <form name="myForm" action="{{ url_for('uploader') }}" method="POST" enctype="multipart/form-data">
   
       <div class="form-group">
-        <label for="caption" style="text-align: left;">Caption <span><b>This caption should be descriptive</b></span></label>
-        <input type="text" name="caption" id="caption" class="form-controll"/>
+        <label for="caption" style="text-align: left;">Caption <span><b>This caption should be meme text, post text or neither</b></span></label>
+        <input type="text" name="caption" id="caption" class="form-controll" />
       </div>
       <div class="form-group file-area">
             <label for="image" style="text-align: left;">Image <span><b>Your image should be at least 400x300 wide</b></span></label>
-        <input type="file" name="image" id="image" required="required" multiple="multiple"/>
+        <input type="file" name="image" id="image" required/>
         <div class="file-dummy">
           <div class="success">Great, your meme is selected. Keep on.</div>
           <div class="default">Please select a meme</div>
         </div>
       </div>
       <div class="form-group">
-        <button type="submit">Get Prediction</button>
+        <button type="submit" value="Submit" onclick="validateAndSend()">Get Prediction</button>
       </div>
     </form>
+    <script>
+        function validateAndSend() {
+            if (myForm.caption.value == '' && myForm.image.value == '') {
+		alert('Enter Caption or Meme or Caption and Meme')
+                return false;
+            }
+            else {
+                myForm.submit();
+            }
+        }
+    </script>
+        </div>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700" rel="stylesheet" type="text/css" />
     </div>
-    <link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'>
-    </section>
+</section>
+    </header>
     <section id="features" class="features">
         <div class="container">
             <div class="text-center section-heading" data-aos="fade-up" data-aos-duration="500" data-aos-once="true">
-                <h2>Unlimited Features, Unlimited Fun</h2>
+                <h2>Our Features</h2>
                 <p class="text-muted">Check out what you can do with our app!</p>
                 <hr>
             </div>
@@ -88,7 +88,7 @@
                     <div class="device-container">
                         <div class="device-mockup iphone6_plus portrait white">
                             <div class="device" style="background-image:url('static/img/iphone_6_plus_white_port.png');">
-                                <div class="screen"><img class="img-fluid" src="static/img/demo-screen-1.jpg"></div>
+                                <div class="screen"><img class="img-fluid" src="static/img/demo-screen-1.png"></div>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                             <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="900" data-aos-once="true">
                                 <div class="feature-item"><i class="icon-screen-smartphone text-primary"></i>
                                     <h3>Accurate Predictions</h3>
-                                    <p class="text-muted">Classify with 75% accuracy!</p>
+                                    <p class="text-muted">Classify with 92% accuracy!</p>
                                 </div>
                             </div>
                             <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="900" data-aos-once="true">
@@ -111,13 +111,13 @@
                             <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="900" data-aos-once="true">
                                 <div class="feature-item"><i class="icon-present text-primary"></i>
                                     <h3>Free to Use</h3>
-                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+                                    <p class="text-muted">As always, this website is free to use for educational purposes!</p>
                                 </div>
                             </div>
                             <div class="col-lg-6" data-aos="zoom-in" data-aos-duration="900" data-aos-once="true">
-                                <div class="feature-item"><i class="icon-lock-open text-primary"></i>
-                                    <h3>Open Source</h3>
-                                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                                <div class="feature-item"><i class="icon-equalizer text-primary"></i>
+                                    <h3>Online Learning</h3>
+                                    <p class="text-muted">Since this app takes feedback from user, we tweak our model to make it better!</p>
                                 </div>
                             </div>
                         </div>
@@ -140,6 +140,7 @@
     <script src="static/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="static/js/Multi-step-form.js"></script>
+    <script src="static/js/title.js"></script>
     <script src="static/js/new-age.js"></script>
 </body>
 

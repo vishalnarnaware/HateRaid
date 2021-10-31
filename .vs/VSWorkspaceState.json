@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\assets\\css",
-    "\\design"
+    "\\memes",
+    "\\static",
+    "\\templates"
   ],
-  "SelectedNode": "\\assets",
+  "SelectedNode": "\\app.py",
   "PreviewInSolutionExplorer": false
 }
