@@ -24,6 +24,12 @@ python app.py
 ```
 Model Checkpoint [here](https://drive.google.com/drive/folders/1BdSbvu9BGm1lA6nE8eTxmqDUzPrlCXsl)
 
+## Screenshots
+|    |    |
+| ---| ---|
+|![Screenshot](static/img/DemoSS/Picture1.png)| ![Screenshot](static/img/DemoSS/Picture2.png) |
+|![Screenshot](static/img/DemoSS/Picture3.png)| ![Screenshot](static/img/DemoSS/Picture4.png) |
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
