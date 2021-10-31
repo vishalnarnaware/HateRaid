@@ -6,6 +6,10 @@ HateRaid - Helps identify Hate Content easily
 Deployed Web Application: [HateRaid](http://hateraid.azurewebsites.net/)     
 
 ## Installation
+Clone the repository.
+```bash
+git clone https://github.com/vishalnarnaware/hatecontent-manthan.git
+```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install requirements.
 
